@@ -7,6 +7,11 @@ import EventDetails from "../pages/EventDetails";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Registration from "../pages/Registration";
+import PrivateRoutes from "./private/PrivateRoutes";
+import EditEvents from "../pages/EditEvents";
+import AddEvent from "../pages/AddEvent";
+import DashboardLayout from "../layouts/DashboardLayout";
+import Dashboard from "../pages/Dashboard";
 
 export const router = createBrowserRouter([
     {
@@ -43,45 +48,45 @@ export const router = createBrowserRouter([
             },
         ],
     },
-    // {
-    //     path: "dashboard",
-    //     element: <DashboardLayout />,
-    //     errorElement: <ErrorPage />,
-    //     children: [
-    //         {
-    //             path: "",
-    //             element: (
-    //                 <PrivateRoutes>
-    //                     <Dashboard />
-    //                 </PrivateRoutes>
-    //             ),
-    //         },
-    //         {
-    //             path: "all-products",
-    //             element: (
-    //                 <PrivateRoutes>
-    //                     <AllProducts />
-    //                 </PrivateRoutes>
-    //             ),
-    //         },
-    //         {
-    //             path: "add-products",
-    //             element: (
-    //                 <PrivateRoutes>
-    //                     <AddProducts />
-    //                 </PrivateRoutes>
-    //             ),
-    //         },
-    //         {
-    //             path: "all-products/edit/:id",
-    //             element: (
-    //                 <PrivateRoutes>
-    //                     <EditProducts />
-    //                 </PrivateRoutes>
-    //             ),
-    //             loader: ({ params }) =>
-    //                 fetch(`http://localhost:3000/shoes/${params.id}`),
-    //         },
-    //     ],
-    // },
+    {
+        path: "dashboard",
+        element: <DashboardLayout />,
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                path: "",
+                element: (
+                    <PrivateRoutes>
+                        <Dashboard />
+                    </PrivateRoutes>
+                ),
+            },
+            {
+                path: "all-events",
+                element: (
+                    <PrivateRoutes>
+                        <AllEvents />
+                    </PrivateRoutes>
+                ),
+            },
+            {
+                path: "add-events",
+                element: (
+                    <PrivateRoutes>
+                        <AddEvent />
+                    </PrivateRoutes>
+                ),
+            },
+            {
+                path: "all-events/edit/:id",
+                element: (
+                    <PrivateRoutes>
+                        <EditEvents />
+                    </PrivateRoutes>
+                ),
+                // loader: ({ params }) =>
+                //     fetch(`http://localhost:3000/shoes/${params.id}`),
+            },
+        ],
+    },
 ]);
