@@ -1,7 +1,13 @@
 import logo from "../assets/logo.png"
 import { Link } from 'react-router-dom';
+import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
+    const { logout, user } = useAuth();
+
+    const handleLogout = async () => {
+        await logout()
+    }
     return (
         <div className="navbar bg-gradient-to-r from-primary to-secondary shadow-lg p-4">
             <div className="navbar-start">
@@ -32,7 +38,7 @@ const Navbar = () => {
                         <li>
                             <Link to="/about" className="text-lg hover:text-white font-medium">About</Link>
                         </li>
-                        {/* {!user && (
+                        {!user && (
                             <>
                                 <li>
                                     <Link to="/login" className="text-lg hover:text-white font-medium">Login</Link>
@@ -41,8 +47,8 @@ const Navbar = () => {
                                     <Link to="/register" className="text-lg hover:text-white font-medium">Register</Link>
                                 </li>
                             </>
-                        )} */}
-                        {/* {user && (
+                        )}
+                        {user && (
                             <>
                                 <li>
                                     <Link to="/dashboard" className="text-lg hover:text-white font-medium">Dashboard</Link>
@@ -56,7 +62,7 @@ const Navbar = () => {
                                     </button>
                                 </li>
                             </>
-                        )} */}
+                        )}
                     </ul>
                 </div>
                 <Link to="/" className="flex items-center space-x-2 text-white text-lg">
@@ -72,7 +78,7 @@ const Navbar = () => {
                     <li>
                         <Link to="/about" className="text-lg hover:text-white font-medium">About</Link>
                     </li>
-                    {/* {!user && (
+                    {!user && (
                         <>
                             <li>
                                 <Link to="/login" className="text-lg hover:text-white font-medium">Login</Link>
@@ -86,10 +92,10 @@ const Navbar = () => {
                         <li>
                             <Link to="/dashboard" className="text-lg hover:text-white font-medium">Dashboard</Link>
                         </li>
-                    )} */}
+                    )}
                 </ul>
             </div>
-            {/* <div className="navbar-end space-x-4">
+            <div className="navbar-end space-x-4">
                 {user && (
                     <button
                         onClick={handleLogout}
@@ -97,13 +103,13 @@ const Navbar = () => {
                     >
                         Logout
                     </button>
-                )} */}
-            {/* <div className="avatar">
+                )}
+                <div className="avatar">
                     <div className="w-12 rounded-full border-2 border-white">
                         <img src={user?.photoURL || "https://via.placeholder.com/150"} alt="User Avatar" />
                     </div>
-                </div> */}
-            {/* </div> */}
+                </div>
+            </div>
         </div>
     );
 };
