@@ -23,13 +23,13 @@ export const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home />,
-                // loader: () => fetch("http://localhost:5000/events"),
+                loader: () => fetch("http://localhost:5000/events"),
             },
             {
                 path: "/products/:id",
                 element: <EventDetails />,
-                // loader: ({ params }) =>
-                //     fetch(`http://localhost:5000/events/${params.id}`),
+                loader: ({ params }) =>
+                    fetch(`http://localhost:5000/events/${params.id}`),
             },
             {
                 path: "/about",
