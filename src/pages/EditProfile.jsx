@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 
 export default function EditProfile() {
@@ -20,60 +21,64 @@ export default function EditProfile() {
             //   email: data?.email,
         };
 
-        // fetch(
-        //   `https://stride-final-project-server.vercel.app/user/${data?.email}`,
-        //   {
-        //     method: "PATCH",
-        //     headers: {
-        //       "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify(userData),
-        //   }
-        // )
-        //   .then((res) => res.json())
-        //   .then((data) => console.log(data));
+        fetch(
+            `http://localhost:5000/user/${data?.email}`,
+            {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(userData),
+            }
+        )
+            .then((res) => res.json())
+            .then(() => toast.success("Profile updated "));
     };
     return (
-        <div>
-            <h1 className="text-3xl mb-7">Edit Profile </h1>
+        <div className="p-8 bg-white shadow-lg rounded-lg max-w-lg mx-auto">
+            <h1 className="text-3xl font-semibold text-gray-800 mb-7">Edit Profile</h1>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-y-5">
                 <div className="flex flex-col">
-                    <label htmlFor="">User Name</label>
+                    <label htmlFor="name" className="text-lg font-medium text-gray-700 mb-2">User Name</label>
                     <input
                         type="text"
                         name="name"
                         defaultValue={data?.name}
-                        className="py-2 px-1 bg-slate-50 "
+                        className="py-3 px-4 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
                     />
                 </div>
                 <div className="flex flex-col">
-                    <label htmlFor="">User email</label>
+                    <label htmlFor="email" className="text-lg font-medium text-gray-700 mb-2">User Email</label>
                     <input
                         type="text"
                         value={data?.email}
                         disabled
                         name="email"
-                        className="py-2 px-1 bg-slate-50 "
+                        className="py-3 px-4 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
                     />
                 </div>
                 <div className="flex flex-col">
-                    <label htmlFor="">User Age</label>
-                    <input type="text" name="age" className="py-2 px-1 bg-slate-50 " />
+                    <label htmlFor="age" className="text-lg font-medium text-gray-700 mb-2">User Age</label>
+                    <input
+                        type="text"
+                        name="age"
+                        className="py-3 px-4 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
+                    />
                 </div>
                 <div className="flex flex-col">
-                    <label htmlFor="">User Mobile</label>
+                    <label htmlFor="mobileNumber" className="text-lg font-medium text-gray-700 mb-2">User Mobile</label>
                     <input
                         type="text"
                         name="mobileNumber"
-                        className="py-2 px-1 bg-slate-50 "
+                        className="py-3 px-4 bg-gray-50 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"
                     />
                 </div>
                 <div className="flex flex-col">
                     <input
                         type="submit"
                         value="Update Profile"
-                        className="py-2 px-1 bg-slate-950 text-white "
+                        className="py-3 px-4 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300 focus:outline-none"
                     />
                 </div>
             </form>

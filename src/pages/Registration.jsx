@@ -16,6 +16,7 @@ const Registration = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
+        const name = form.name.value;
         const confirm_password = form.confirm_password.value;
 
         if (password !== confirm_password) {
@@ -25,7 +26,23 @@ const Registration = () => {
         console.log(email, password, confirm_password);
 
         if (password === confirm_password) {
-            createUser(email, password);
+            createUser(email, password).then((data) => {
+                if (data?.user?.email) {
+                    const userInfo = {
+                        email: data?.user?.email,
+                        name: name,
+                    };
+                    fetch("http://localhost:5000/user", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(userInfo),
+                    })
+                        .then((res) => res.json())
+                        .then((data) => console.log(data));
+                }
+            });
             if (user) {
                 navigate(from);
             }
@@ -52,6 +69,18 @@ const Registration = () => {
                                 placeholder="email"
                                 className="input input-bordered"
                                 name="email"
+                                required
+                            />
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Name</span>
+                            </label>
+                            <input
+                                type="name"
+                                placeholder="name"
+                                className="input input-bordered"
+                                name="name"
                                 required
                             />
                         </div>

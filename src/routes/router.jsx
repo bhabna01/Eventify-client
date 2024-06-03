@@ -55,7 +55,7 @@ export const router = createBrowserRouter([
         errorElement: <ErrorPage />,
         children: [
             {
-                path: "",
+                path: "home",
                 element: (
                     <PrivateRoutes>
                         <Dashboard />
@@ -85,10 +85,10 @@ export const router = createBrowserRouter([
                         <EditProfile />
                     </PrivateRoutes>
                 ),
-                // loader: ({ params }) =>
-                //   fetch(
-                //     `https://stride-final-project-server.vercel.app/user/get/${params.id}`
-                //   ),
+                loader: ({ params }) =>
+                    fetch(
+                        `http://localhost:5000/user/get/${params.id}`
+                    ),
             },
             {
                 path: "all-events/edit/:id",

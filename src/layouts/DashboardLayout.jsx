@@ -11,7 +11,7 @@ const DashboardLayout = () => {
                 </div>
                 <ul>
                     <li className="border border-gray-700 rounded p-4 mb-2">
-                        <Link to={"/"} className="flex items-center text-gray-300 hover:text-white">
+                        <Link to={"home"} className="flex items-center text-gray-300 hover:text-white">
                             <FiHome className="mr-2" />
                             Dashboard
                         </Link>

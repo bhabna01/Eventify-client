@@ -1,30 +1,34 @@
+import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 
 const Dashboard = () => {
-    const { user, handleLogout } = useAuth();
-    return (
-        <div>
-            {/* Navbar */}
-            <nav className="bg-gray-800 text-white p-4">
-                <div className="container mx-auto flex justify-between items-center">
-                    <h1 className="text-2xl font-bold">Eventify</h1>
-                    {user && (
-                        <div className="flex items-center">
-                            <img src={user.photoURL} alt="User" className="w-8 h-8 rounded-full mr-2" />
-                            <div>
-                                <p className="text-sm font-medium">{user.displayName}</p>
-                                <p className="text-xs text-gray-300">{user.email}</p>
-                            </div>
-                            {/* Add Logout button here if needed */}
-                        </div>
-                    )}
-                </div>
-            </nav>
-            {/* Dashboard content */}
-            <div className="container mx-auto py-8">
-                <h2 className="text-3xl font-bold mb-4">Dashboard</h2>
+    const { user } = useAuth();
+    const [userInfo, setUserInfo] = useState();
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/user/${user?.email}`)
+            .then((res) => res.json())
+            .then((data) => setUserInfo(data));
+    }, [user]);
+
+    console.log(userInfo);
+
+    return (
+        <div className="p-8 bg-white shadow-lg rounded-lg">
+            <div className="flex justify-between items-center mb-7">
+                <h1 className="text-3xl font-semibold text-gray-800">Profile Information</h1>
+                <Link
+                    to={`/dashboard/profile/edit/${userInfo?._id}`}
+                    className="btn btn-neutral btn-md px-6 py-2 bg-blue-600 text-white rounded-full shadow-md hover:bg-blue-700 transition duration-300"
+                >
+                    Edit Profile
+                </Link>
+            </div>
+            <div className="bg-gray-100 p-6 rounded-lg">
+                <h2 className="text-2xl font-semibold text-gray-700 mb-4">{userInfo?.name}</h2>
+                <p className="text-lg text-gray-600">{userInfo?.email}</p>
             </div>
         </div>
     );
