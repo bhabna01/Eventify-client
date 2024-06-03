@@ -14,7 +14,7 @@ const EditEvents = () => {
     const [image_url, setImageURL] = useState(event.image_url);
 
     const handleSubmit = async (e) => {
-        // const token = localStorage.getItem("token");
+        const token = localStorage.getItem("token");
         e.preventDefault();
 
         const form = e.target;
@@ -32,7 +32,7 @@ const EditEvents = () => {
                 method: "PATCH",
                 headers: {
                     "Content-type": "application/json",
-                    //   authorization: `Bearer ${token}`,
+                    authorization: `Bearer ${token}`,
                 },
                 body: JSON.stringify(data),
             }

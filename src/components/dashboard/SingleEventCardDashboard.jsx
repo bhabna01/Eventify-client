@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 
+// eslint-disable-next-line react/prop-types
 const SingleEventCardDashboard = ({ event, onDelete }) => {
-    // const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
     const { _id, title, price, description, image_url } = event;
 
     const handleDelete = async () => {
@@ -11,7 +13,7 @@ const SingleEventCardDashboard = ({ event, onDelete }) => {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json",
-                //   authorization: `Bearer ${token}`,
+                authorization: `Bearer ${token}`,
             },
         })
             .then((res) => res.json())
