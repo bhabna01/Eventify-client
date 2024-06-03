@@ -1,8 +1,31 @@
+import { useEffect, useState } from "react";
+import SingleEventCardDashboard from "../components/dashboard/SingleEventCardDashboard";
 
 const AllEvents = () => {
+    const [events, setEvents] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:5000/events")
+            .then((res) => res.json())
+            .then((data) => setEvents(data));
+    }, []);
+
+    const handleDeleteProduct = (id) => {
+        setEvents(events.filter((event) => event._id !== id));
+    };
+
     return (
         <div>
-
+            <h1 className="text-5xl font-bold text-center">All Events</h1>
+            <div className="my-16 flex flex-wrap gap-4">
+                {events.map((event) => (
+                    <SingleEventCardDashboard
+                        key={event._id}
+                        event={event}
+                        onDelete={handleDeleteProduct}
+                    />
+                ))}
+            </div>
         </div>
     );
 };

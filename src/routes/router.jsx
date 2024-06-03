@@ -12,6 +12,7 @@ import EditEvents from "../pages/EditEvents";
 import AddEvent from "../pages/AddEvent";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Dashboard from "../pages/Dashboard";
+import EditProfile from "../pages/EditProfile";
 
 export const router = createBrowserRouter([
     {
@@ -22,13 +23,13 @@ export const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home />,
-                // loader: () => fetch("http://localhost:3000/shoes"),
+                // loader: () => fetch("http://localhost:5000/events"),
             },
             {
                 path: "/products/:id",
                 element: <EventDetails />,
                 // loader: ({ params }) =>
-                //     fetch(`http://localhost:3000/shoes/${params.id}`),
+                //     fetch(`http://localhost:5000/events/${params.id}`),
             },
             {
                 path: "/about",
@@ -78,14 +79,26 @@ export const router = createBrowserRouter([
                 ),
             },
             {
+                path: "profile/edit/:id",
+                element: (
+                    <PrivateRoutes>
+                        <EditProfile />
+                    </PrivateRoutes>
+                ),
+                // loader: ({ params }) =>
+                //   fetch(
+                //     `https://stride-final-project-server.vercel.app/user/get/${params.id}`
+                //   ),
+            },
+            {
                 path: "all-events/edit/:id",
                 element: (
                     <PrivateRoutes>
                         <EditEvents />
                     </PrivateRoutes>
                 ),
-                // loader: ({ params }) =>
-                //     fetch(`http://localhost:3000/shoes/${params.id}`),
+                loader: ({ params }) =>
+                    fetch(`http://localhost:5000/events/${params.id}`),
             },
         ],
     },
