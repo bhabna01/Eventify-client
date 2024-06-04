@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import backgroundImage from "../assets/login.jpg"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GoogleLogin from "../components/Login-Registration/GoogleLogin";
 import useAuth from "../hooks/useAuth";
 
@@ -43,11 +43,14 @@ const Registration = () => {
                         .then((data) => console.log(data));
                 }
             });
-            if (user) {
-                navigate(from);
-            }
+
         }
     };
+    useEffect(() => {
+        if (user) {
+            navigate(from, { replace: true });
+        }
+    }, [user, from, navigate]);
     return (
         <form onSubmit={handleSubmit} className="hero min-h-screen bg-cover bg-center" style={{ backgroundImage: `url(${backgroundImage})` }}>
             <div className="hero-overlay bg-opacity-60 bg-black"></div>

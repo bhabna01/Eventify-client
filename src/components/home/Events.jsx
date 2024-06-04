@@ -11,7 +11,7 @@ const Events = ({ data }) => {
                 {
                     // eslint-disable-next-line react/prop-types
                     data.map((event) => (
-                        <SingleEvent key={event.id} event={event} />
+                        <SingleEvent key={event._id} event={event} />
                     ))
                 }
             </div>
