@@ -13,6 +13,7 @@ import AddEvent from "../pages/AddEvent";
 import DashboardLayout from "../layouts/DashboardLayout";
 import Dashboard from "../pages/Dashboard";
 import EditProfile from "../pages/EditProfile";
+import UpcomingEvents from "../components/UpcomingEvents";
 
 export const router = createBrowserRouter([
     {
@@ -26,10 +27,12 @@ export const router = createBrowserRouter([
                 loader: () => fetch("http://localhost:5000/events"),
             },
             {
-                path: "/products/:id",
+                path: "events/:id",
                 element: <EventDetails />,
                 loader: ({ params }) =>
-                    fetch(`http://localhost:5000/events/${params.id}`),
+                    fetch(
+                        `http://localhost:5000/events/${params.id}`
+                    ),
             },
             {
                 path: "/about",
@@ -46,6 +49,10 @@ export const router = createBrowserRouter([
             {
                 path: "/all-events",
                 element: <AllEvents></AllEvents>,
+            },
+            {
+                path: "/upcoming",
+                element: <UpcomingEvents></UpcomingEvents>,
             },
         ],
     },

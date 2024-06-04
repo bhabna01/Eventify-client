@@ -11,7 +11,7 @@ const Banner = () => {
                         Explore our upcoming events and be part of something extraordinary. From conferences to workshops, we have events for everyone.
                     </p>
                     <button className="btn btn-primary btn-lg transform transition-transform hover:scale-105">
-                        <Link to="">Explore Events</Link>
+                        <Link to="/upcoming">Explore Events</Link>
                     </button>
                 </div>
             </div>

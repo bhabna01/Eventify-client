@@ -18,7 +18,7 @@ const SingleEventCardDashboard = ({ event, onDelete }) => {
         })
             .then((res) => res.json())
             .then(() => {
-                toast.success("Product Deleted");
+                toast.success("Event Deleted");
                 onDelete(_id);
             });
     };
@@ -34,7 +34,7 @@ const SingleEventCardDashboard = ({ event, onDelete }) => {
                 <p>{description}</p>
                 <div className="card-actions justify-end">
                     <button className="btn bg-indigo-500 text-white">
-                        <Link to={`/products/${_id}`}>See details</Link>
+                        <Link to={`/events/${_id}`}>See details</Link>
                     </button>
                     <button className="btn bg-green-600 text-white">
                         <Link to={`edit/${_id}`}>Edit</Link>

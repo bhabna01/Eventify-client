@@ -2,6 +2,7 @@ import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 
 export default function EditProfile() {
+    const token = localStorage.getItem("token");
     const data = useLoaderData();
 
     const handleSubmit = (e) => {
@@ -27,6 +28,7 @@ export default function EditProfile() {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
+                    authorization: `Bearer ${token}`,
                 },
                 body: JSON.stringify(userData),
             }

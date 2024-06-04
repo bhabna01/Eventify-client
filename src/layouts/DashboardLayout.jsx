@@ -1,5 +1,5 @@
 
-import { FiEdit, FiGrid, FiHome, FiPlus } from 'react-icons/fi';
+import { FiGrid, FiHome, FiPlus } from 'react-icons/fi';
 import { Link, Outlet } from 'react-router-dom';
 
 const DashboardLayout = () => {
