@@ -8,7 +8,7 @@ const UpcomingEvents = () => {
         const fetchEvents = async () => {
             // Replace with your actual API endpoints
 
-            const upcomingResponse = await axios.get('http://localhost:5000/upcoming');
+            const upcomingResponse = await axios.get('https://eventify-server-amber.vercel.app/upcoming');
 
             setUpcomingEvents(upcomingResponse.data);
         };

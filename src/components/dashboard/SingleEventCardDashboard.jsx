@@ -9,7 +9,7 @@ const SingleEventCardDashboard = ({ event, onDelete }) => {
     const { _id, title, price, description, image_url } = event;
 
     const handleDelete = async () => {
-        await fetch(`http://localhost:5000/events/${_id}`, {
+        await fetch(`https://eventify-server-amber.vercel.app/events/${_id}`, {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json",

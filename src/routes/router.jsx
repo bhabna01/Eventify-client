@@ -25,14 +25,14 @@ export const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home />,
-                loader: () => fetch("http://localhost:5000/events"),
+                loader: () => fetch("https://eventify-server-amber.vercel.app/events"),
             },
             {
                 path: "events/:id",
                 element: <EventDetails />,
                 loader: ({ params }) =>
                     fetch(
-                        `http://localhost:5000/events/${params.id}`
+                        `https://eventify-server-amber.vercel.app/events/${params.id}`
                     ),
             },
             {
@@ -103,7 +103,7 @@ export const router = createBrowserRouter([
                 ),
                 loader: ({ params }) =>
                     fetch(
-                        `http://localhost:5000/user/get/${params.id}`
+                        `https://eventify-server-amber.vercel.app/user/get/${params.id}`
                     ),
             },
             {
@@ -114,7 +114,7 @@ export const router = createBrowserRouter([
                     </PrivateRoutes>
                 ),
                 loader: ({ params }) =>
-                    fetch(`http://localhost:5000/events/${params.id}`),
+                    fetch(`https://eventify-server-amber.vercel.app/events/${params.id}`),
             },
         ],
     },

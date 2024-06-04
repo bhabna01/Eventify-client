@@ -8,7 +8,7 @@ const FeaturedEvents = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             // Replace with your actual API endpoints
-            const featuredResponse = await axios.get('http://localhost:5000/featured');
+            const featuredResponse = await axios.get('https://eventify-server-amber.vercel.app/featured');
 
             setFeaturedEvents(featuredResponse.data);
 

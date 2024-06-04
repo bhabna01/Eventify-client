@@ -8,7 +8,7 @@ const Chart = () => {
 
         const fetchData = async () => {
             try {
-                const response = await fetch('http://localhost:5000/data');
+                const response = await fetch('https://eventify-server-amber.vercel.app/data');
                 const result = await response.json();
                 setData(result);
             } catch (error) {

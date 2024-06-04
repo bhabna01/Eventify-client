@@ -27,7 +27,7 @@ const EditEvents = () => {
         const data = { title, price, description, image_url };
 
         await fetch(
-            `http://localhost:5000/events/${event._id}`,
+            `https://eventify-server-amber.vercel.app/events/${event._id}`,
             {
                 method: "PATCH",
                 headers: {

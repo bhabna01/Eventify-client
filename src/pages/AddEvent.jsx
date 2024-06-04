@@ -15,7 +15,7 @@ const AddEvent = () => {
 
         const data = { title, price, description, image_url };
 
-        await fetch("http://localhost:5000/events", {
+        await fetch("https://eventify-server-amber.vercel.app/events", {
             method: "POST",
             headers: {
                 "Content-type": "application/json",

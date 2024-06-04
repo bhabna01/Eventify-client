@@ -11,8 +11,8 @@ const SearchEvents = () => {
     useEffect(() => {
         const fetchEvents = async () => {
             try {
-                const featuredResponse = await fetch('http://localhost:5000/featured');
-                const upcomingResponse = await fetch('http://localhost:5000/upcoming');
+                const featuredResponse = await fetch('https://eventify-server-amber.vercel.app/featured');
+                const upcomingResponse = await fetch('https://eventify-server-amber.vercel.app/upcoming');
                 const featuredData = await featuredResponse.json();
                 const upcomingData = await upcomingResponse.json();
                 const allEvents = [...featuredData, ...upcomingData];
