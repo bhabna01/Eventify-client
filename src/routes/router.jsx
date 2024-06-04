@@ -14,6 +14,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import Dashboard from "../pages/Dashboard";
 import EditProfile from "../pages/EditProfile";
 import UpcomingEvents from "../components/UpcomingEvents";
+import Chart from "../pages/Chart";
 
 export const router = createBrowserRouter([
     {
@@ -61,6 +62,14 @@ export const router = createBrowserRouter([
         element: <DashboardLayout />,
         errorElement: <ErrorPage />,
         children: [
+            {
+                path: "",
+                element: (
+                    <PrivateRoutes>
+                        <Chart></Chart>
+                    </PrivateRoutes>
+                ),
+            },
             {
                 path: "home",
                 element: (

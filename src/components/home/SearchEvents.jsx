@@ -18,7 +18,7 @@ const SearchEvents = () => {
                 const allEvents = [...featuredData, ...upcomingData];
                 setFeaturedEvents(featuredData);
                 setUpcomingEvents(upcomingData);
-                setFilteredEvents(allEvents); // Set initial filtered events to all events
+                setFilteredEvents(allEvents);
             } catch (error) {
                 console.error("Error fetching events:", error);
             }
