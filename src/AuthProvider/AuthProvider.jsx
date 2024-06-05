@@ -9,7 +9,7 @@ import {
 } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { app } from "../firebase/firebase.config";
-import axios from "axios";
+
 
 export const AuthContext = createContext(null);
 
@@ -20,38 +20,32 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const googleProvider = new GoogleAuthProvider();
-    const setToken = (token) => {
-        localStorage.setItem('jwtToken', token);
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    };
-    // const createUser = (email, password) => {
-    //     setLoading(true);
-    //     return createUserWithEmailAndPassword(auth, email, password);
-    // };
-    const createUser = async (email, password) => {
+
+    const createUser = (email, password) => {
         setLoading(true);
-        const { user } = await createUserWithEmailAndPassword(auth, email, password);
-        const idToken = await user.getIdToken();
-        const res = await axios.post('https://eventify-server-amber.vercel.app/user', { idToken });
-        setToken(res.data.token);
-        setUser(user);
-        setLoading(false);
+        return createUserWithEmailAndPassword(auth, email, password);
     };
 
-
-    // const signIn = (email, password) => {
-    //     setLoading(true);
-    //     return signInWithEmailAndPassword(auth, email, password);
-    // };
     const signIn = async (email, password) => {
-        setLoading(true);
-        const { user } = await signInWithEmailAndPassword(auth, email, password);
-        const idToken = await user.getIdToken();
-        const res = await axios.post('https://eventify-server-amber.vercel.app/user', { idToken });
-        setToken(res.data.token);
-        setUser(user);
-        setLoading(false);
+        const response = await signInWithEmailAndPassword(auth, email, password);
+        const userInfo = { email: response.user.email };
+        const res = await fetch('https://eventify-server-amber.vercel.app/user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userInfo),
+        });
+
+        const data = await res.json();
+        if (data?.token) {
+            localStorage.setItem('token', data.token);
+            setUser(response.user);
+        } else {
+            throw new Error('Failed to retrieve token');
+        }
     };
+
 
     const logout = () => {
         return signOut(auth).then(() => setUser(null));
