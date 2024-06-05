@@ -23,7 +23,7 @@ const SingleEventCardDashboard = ({ event, onDelete }) => {
             });
     };
     return (
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card mx-4 w-96 bg-base-100 shadow-xl">
             <figure>
                 <img src={image_url} alt="Shoes" />
             </figure>

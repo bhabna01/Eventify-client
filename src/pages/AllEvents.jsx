@@ -17,7 +17,7 @@ const AllEvents = () => {
     return (
         <div>
             <h1 className="text-5xl font-bold text-center">All Events</h1>
-            <div className="my-16 flex flex-wrap gap-4">
+            <div className="my-10 flex flex-wrap  gap-2">
                 {events.map((event) => (
                     <SingleEventCardDashboard
                         key={event._id}
@@ -27,6 +27,7 @@ const AllEvents = () => {
                 ))}
             </div>
         </div>
+
     );
 };
 
