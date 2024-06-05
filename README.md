@@ -52,3 +52,5 @@ Start the development server:npm run dev
 - jwt-decode: Library for decoding JWT tokens
 - recharts: Library for building charts with React
 - firebase: Firebase JavaScript SDK for authentication
+### Live Clientsite
+https://eventify-client-beta.vercel.app
