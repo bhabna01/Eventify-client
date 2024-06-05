@@ -67,6 +67,7 @@ const SearchEvents = () => {
                 )}
             </div>
         </div>
+
     );
 };
 export default SearchEvents;
