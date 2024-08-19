@@ -1,36 +1,22 @@
 
+import AwesomeSlider from 'react-awesome-slider';
 import { Link } from 'react-router-dom';
-import backgroundImage from '../../assets/Banner.jpg'
+import img1 from "../../../src/assets/birthday.jpg"
+import img2 from "../../../src/assets/concerts.jpg"
+import img3 from "../../../src/assets/wedding.jpg"
+
+import 'react-awesome-slider/dist/styles.css';
+
+
+
 const Banner = () => {
     return (
-        // <div className="relative h-screen bg-cover bg-center" style={{ backgroundImage: `url(${backgroundImage})` }}>
-        //     <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-        //         <div className="text-center text-white p-6 md:p-10">
-        //             <h1 className="mb-5 text-5xl font-bold">Join the Ultimate Experience</h1>
-        //             <p className="mb-5 text-lg">
-        //                 Explore our upcoming events and be part of something extraordinary. From conferences to workshops, we have events for everyone.
-        //             </p>
-        //             <button className="btn btn-primary btn-lg transform transition-transform hover:scale-105">
-        //                 <Link to="/upcoming">Explore Events</Link>
-        //             </button>
-        //         </div>
-        //     </div>
-        // </div>
-        <div className="container mx-auto px-4 py-16">
-            <div className="relative h-screen bg-cover bg-center" style={{ backgroundImage: `url(${backgroundImage})` }}>
-                <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                    <div className="text-center text-white p-6 md:p-10">
-                        <h1 className="mb-5 text-5xl font-bold">Join the Ultimate Experience</h1>
-                        <p className="mb-5 text-lg">
-                            Explore our upcoming events and be part of something extraordinary. From conferences to workshops, we have events for everyone.
-                        </p>
-                        <button className="btn btn-primary btn-lg transform transition-transform hover:scale-105">
-                            <Link to="/upcoming">Explore Events</Link>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+        <AwesomeSlider className='h-[500px] mt-11 bg-cover' >
+            <div data-src={img1} />
+            <div data-src={img2} />
+            <div data-src={img3} />
+        </AwesomeSlider>
     );
 };
 
