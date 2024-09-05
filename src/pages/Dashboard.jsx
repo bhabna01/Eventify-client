@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { Link } from "react-router-dom";
 
-
+import userpic from "../assets/user.png"
 const Dashboard = () => {
     const { user } = useAuth();
     const [userInfo, setUserInfo] = useState();
@@ -31,7 +31,7 @@ const Dashboard = () => {
                 <div className="bg-gray-50 p-6 rounded-lg shadow-inner">
                     <div className="flex items-center mb-4 space-x-4">
                         <img
-                            src={userInfo?.photoURL || "https://via.placeholder.com/100"}
+                            src={userInfo?.photoURL || userpic}
                             alt="Profile"
                             className="w-24 h-24 rounded-full shadow-lg"
                         />

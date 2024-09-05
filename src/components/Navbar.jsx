@@ -4,7 +4,6 @@ import useAuth from "../hooks/useAuth";
 import userpic from "../assets/user.png"
 import { useState } from "react";
 
-import EventList from "./EventList";
 
 const Navbar = () => {
     const { logout, user } = useAuth();
@@ -18,7 +17,7 @@ const Navbar = () => {
 
     const handleSearch = (searchQuery) => {
         if (searchQuery.trim() === "") {
-            // Close modal and reset events if search query is empty
+
             setIsModalOpen(false);
             setEvents([]);
             return;
@@ -29,7 +28,7 @@ const Navbar = () => {
             .then((res) => res.json())
             .then((data) => {
                 setEvents(data);
-                setIsModalOpen(true); // Open modal if search query is not empty
+                setIsModalOpen(true);
             });
     };
 
