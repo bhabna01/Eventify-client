@@ -4,8 +4,8 @@ import SingleEvent from "./SingleEvent";
 
 const Events = ({ data }) => {
     return (
-        <div>
-            <h1 className="my-8 text-2xl font-bold text-center">Our Services</h1>
+        <div className="mt-12">
+            <h1 className="my-8 text-2xl font-bold text-center ">Our Services</h1>
 
             <div className="flex flex-wrap gap-2 px-6 justify-center items-center">
                 {

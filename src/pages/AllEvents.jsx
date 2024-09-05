@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import SingleEventCardDashboard from "../components/dashboard/SingleEventCardDashboard";
+import SingleEventRow from "../components/dashboard/SingleEventRow";
 
 const AllEvents = () => {
     const [events, setEvents] = useState([]);
@@ -17,14 +18,27 @@ const AllEvents = () => {
     return (
         <div>
             <h1 className="text-5xl font-bold text-center">All Events</h1>
-            <div className="my-10 flex flex-wrap  gap-2">
-                {events.map((event) => (
-                    <SingleEventCardDashboard
-                        key={event._id}
-                        event={event}
-                        onDelete={handleDeleteProduct}
-                    />
-                ))}
+            <div className="overflow-x-auto my-10">
+                <table className="table w-full">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {events.map((event) => (
+                            <SingleEventRow
+                                key={event._id}
+                                event={event}
+                                onDelete={handleDeleteProduct}
+                            />
+                        ))}
+                    </tbody>
+                </table>
             </div>
         </div>
 

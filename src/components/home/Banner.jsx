@@ -1,22 +1,31 @@
 
-import AwesomeSlider from 'react-awesome-slider';
-import { Link } from 'react-router-dom';
-import img1 from "../../../src/assets/birthday.jpg"
-import img2 from "../../../src/assets/concerts.jpg"
-import img3 from "../../../src/assets/wedding.jpg"
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
-import 'react-awesome-slider/dist/styles.css';
+
+
+
 
 
 
 const Banner = () => {
     return (
 
-        <AwesomeSlider className='h-[500px] mt-11 bg-cover' >
-            <div data-src={img1} />
-            <div data-src={img2} />
-            <div data-src={img3} />
-        </AwesomeSlider>
+        <Carousel >
+            <div >
+                <img src="https://i.ibb.co/BZ5FNqS/jordan-arnold-Ul07-QK2-AR-0-unsplash-1.jpg" />
+
+            </div>
+            <div>
+                <img src='https://i.ibb.co/qrCW7nj/diane-picchiottino-x-X21-Sxqzb2c-unsplash-1.jpg' />
+
+            </div>
+            <div>
+                <img src="https://i.ibb.co/Drk9zbK/patricia-prudente-THc-Xu1-Lgl-G8-unsplash-1.jpg
+"  />
+
+            </div>
+        </Carousel>
     );
 };
 
