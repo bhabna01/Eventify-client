@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import SingleEventCardDashboard from "../components/dashboard/SingleEventCardDashboard";
+
 import SingleEventRow from "../components/dashboard/SingleEventRow";
 
 const AllEvents = () => {
     const [events, setEvents] = useState([]);
+
 
     useEffect(() => {
         fetch("https://eventify-server-amber.vercel.app/events")
